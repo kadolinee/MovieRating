@@ -1,0 +1,264 @@
+body {
+  background-color: rgb(222, 222, 222);
+  font: 600 1em/1.38 'Open Sans';
+  color: rgb(0, 0, 0);
+}
+
+.element_footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(24, 24, 24);
+}
+
+.element_header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(43, 43, 43);
+}
+
+.element_login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  width: 100%;
+  height: 545px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.error {
+  position: relative;
+  float: left;
+  z-index: 10;
+  width: 48.9568845618%;
+  height: 47px;
+  min-height: 50px;
+  margin: 170px 0 0 33.70132%;
+  font-size: 0.875em;
+  line-height: 5.5;
+  color: rgb(159, 25, 33);
+}
+
+.footer {
+  position: relative;
+  float: left;
+  clear: both;
+  width: 100%;
+  height: 100px;
+}
+
+.h1 {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  width: 34.0958510915%;
+  min-height: 60px;
+  margin: 0 auto;
+  font-size: 2.25em;
+  color: rgb(43, 43, 43);
+}
+
+.h2 {
+  position: absolute;
+  min-height: 52px;
+  font-size: 1.375em;
+  line-height: 2.2;
+  text-align: right;
+  letter-spacing: 1px;
+  color: rgb(128, 128, 128);
+}
+
+.header {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100px;
+}
+
+.login {
+  position: relative;
+  float: left;
+  clear: both;
+  width: 59.9166666666%;
+  height: 545px;
+  margin-left: 20.19922%;
+}
+
+.logo {
+  position: absolute;
+  top: 14px;
+  left: 0.3567708333%;
+  z-index: 13;
+  width: 193px;
+  min-height: 65px;
+  font: 400 2.75em/1.68 Oswald;
+  text-align: center;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+}
+
+.search {
+  display: block;
+  position: absolute;
+  top: 39px;
+  left: 24.20703125%;
+  z-index: 14;
+  width: 31.0507812499%;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: rgb(242, 242, 242);
+  font-size: 1em;
+  font-weight: 300;
+  color: rgb(0, 0, 0);
+}
+
+.text_footer {
+  position: absolute;
+  top: 26px;
+  left: 37.6666666666%;
+  z-index: 1;
+  width: 294px;
+  min-height: 45px;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 3;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+._button {
+  display: block;
+  position: absolute;
+  background-color: rgb(222, 222, 222);
+  text-align: center;
+}
+
+._button:hover {
+  background-color: rgb(94, 94, 94);
+}
+
+._input {
+  display: block;
+  width: 48.7083587022%;
+  height: 52px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: rgb(242, 242, 242);
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+._select {
+  display: block;
+  position: absolute;
+  top: 39px;
+  left: 59.015625%;
+  z-index: 15;
+  width: 54px;
+  height: 32px;
+  padding-left: 10px;
+  border-radius: 3px;
+  background: rgb(222, 222, 222);
+  font-size: 1em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+._select:hover {
+  background-color: rgb(94, 94, 94);
+}
+
+.header ._button {
+  height: 32px;
+  border-radius: 3px;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.login ._button {
+  top: 406px;
+  left: 58.3086892232%;
+  z-index: 8;
+  width: 24.3541793511%;
+  height: 52px;
+  border-radius: 5px;
+  font-size: 1.375em;
+  letter-spacing: 1px;
+  color: rgb(128, 128, 128);
+}
+
+.h2-1 {
+  top: 220px;
+  left: 13.8652692006%;
+  z-index: 6;
+  width: 16.839175437%;
+}
+
+.h2-2 {
+  top: 314px;
+  left: 6.2350178307%;
+  z-index: 7;
+  width: 24.4933460902%;
+}
+
+.header ._button-1 {
+  top: 39px;
+  left: 73.46640625%;
+  z-index: 19;
+  width: auto;
+  padding: 0 10px;
+}
+
+.header ._button-2 {
+  top: 39px;
+  left: 65.4127604166%;
+  z-index: 18;
+  width: auto;
+  padding: 0 10px;
+}
+
+.header ._button-3 {
+  top: 18px;
+  left: 82.32421875%;
+  z-index: 17;
+  width: auto;
+  padding: 0 10px;
+}
+
+.header ._button-4 {
+  top: 55px;
+  left: 82.2994791666%;
+  z-index: 16;
+  width: auto;
+  padding: 0 10px;
+}
+
+.login ._input-1 {
+  position: absolute;
+  top: 220px;
+  float: left;
+  clear: both;
+  z-index: 4;
+  margin-left: 33.73392%;
+  color: rgb(128, 128, 128);
+}
+
+.login ._input-2 {
+  position: absolute;
+  top: 314px;
+  left: 33.7348873619%;
+  z-index: 5;
+  color: rgb(0, 0, 0);
+}
