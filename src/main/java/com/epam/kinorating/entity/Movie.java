@@ -1,9 +1,16 @@
 package com.epam.kinorating.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "movie")
 public class Movie implements Serializable{
+    @Id
     private int id;
+
     private String name_ru;
     private String name_en;
     private String genre_ru;

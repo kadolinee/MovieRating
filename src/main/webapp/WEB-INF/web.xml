@@ -62,11 +62,4 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <jsp-config>
-        <taglib>
-            <taglib-uri>http://localhost:8080/jsp/tlds/mytags</taglib-uri>
-            <taglib-location>/WEB-INF/numberformatter.tld</taglib-location>
-        </taglib>
-    </jsp-config>
-
 </web-app>
