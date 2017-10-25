@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
     private static final Logger log = Logger.getLogger(MovieDAOImpl.class);
@@ -27,27 +28,27 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
 
 
     @Override
-    public boolean create(Movie movie) throws DAOException {
+    public boolean create(Movie movie) {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
             con = manager.getConnection();
             stmt = con.prepareStatement(SQL_CREATE_MOVIE);
 
-            stmt.setString(1, movie.getName_ru());
-            stmt.setString(2, movie.getName_en());
-            stmt.setString(3, movie.getGenre_ru());
-            stmt.setString(4, movie.getGenre_en());
+            stmt.setString(1, movie.getNameRu());
+            stmt.setString(2, movie.getNameEn());
+            stmt.setString(3, movie.getGenreRu());
+            stmt.setString(4, movie.getGenreEn());
             stmt.setInt(5, movie.getYear());
-            stmt.setString(6, movie.getTitle_ru());
-            stmt.setString(7, movie.getTitle_en());
-            stmt.setString(8, movie.getCountry_ru());
-            stmt.setString(9, movie.getCountry_en());
+            stmt.setString(6, movie.getTitleRu());
+            stmt.setString(7, movie.getTitleEn());
+            stmt.setString(8, movie.getCountryRu());
+            stmt.setString(9, movie.getCountryEn());
             stmt.setInt(10, movie.getDuration());
-            stmt.setString(11, movie.getCast_ru());
-            stmt.setString(12, movie.getCast_en());
-            stmt.setString(13, movie.getAwards_ru());
-            stmt.setString(14, movie.getAwards_en());
+            stmt.setString(11, movie.getCastRu());
+            stmt.setString(12, movie.getCastEn());
+            stmt.setString(13, movie.getAwardsRu());
+            stmt.setString(14, movie.getAwardsEn());
             stmt.setBoolean(15, movie.isTvSerial());
             stmt.setString(16, movie.getImage());
 
@@ -63,7 +64,7 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
     }
 
     @Override
-        public Movie read(int id) throws DAOException {
+        public Movie read(int id) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -76,25 +77,25 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
 
             rs = stmt.executeQuery();
             if (rs.next()) {
-                String name_ru = rs.getString(Fields.MOVIE_NAME_RU);
-                String name_en = rs.getString(Fields.MOVIE_NAME_EN);
-                String genre_ru = rs.getString(Fields.MOVIE_GENRE_RU);
-                String genre_en = rs.getString(Fields.MOVIE_GENRE_EN);
+                String nameRu = rs.getString(Fields.MOVIE_NAME_RU);
+                String nameEn = rs.getString(Fields.MOVIE_NAME_EN);
+                String genreRu = rs.getString(Fields.MOVIE_GENRE_RU);
+                String genreEn = rs.getString(Fields.MOVIE_GENRE_EN);
                 int year = rs.getInt(Fields.MOVIE_YEAR);
-                String title_ru = rs.getString(Fields.MOVIE_TITLE_RU);
-                String title_en = rs.getString(Fields.MOVIE_TITLE_EN);
-                String country_ru = rs.getString(Fields.MOVIE_COUNTRY_RU);
-                String country_en = rs.getString(Fields.MOVIE_COUNTRY_EN);
+                String titleRu = rs.getString(Fields.MOVIE_TITLE_RU);
+                String titleEn = rs.getString(Fields.MOVIE_TITLE_EN);
+                String countryRu = rs.getString(Fields.MOVIE_COUNTRY_RU);
+                String countryEn = rs.getString(Fields.MOVIE_COUNTRY_EN);
                 int duration = rs.getInt(Fields.MOVIE_DURATION);
-                String cast_ru = rs.getString(Fields.MOVIE_CAST_RU);
-                String cast_en = rs.getString(Fields.MOVIE_CAST_EN);
-                String awards_ru = rs.getString(Fields.MOVIE_AWARDS_RU);
-                String awards_en = rs.getString(Fields.MOVIE_AWARDS_EN);
+                String castRu = rs.getString(Fields.MOVIE_CAST_RU);
+                String castEn = rs.getString(Fields.MOVIE_CAST_EN);
+                String awardsRu = rs.getString(Fields.MOVIE_AWARDS_RU);
+                String awardsEn = rs.getString(Fields.MOVIE_AWARDS_EN);
                 String image = rs.getString(Fields.MOVIE_IMAGE);
                 boolean tvSerial = rs.getBoolean(Fields.MOVIE_TVSERIAL);
 
-                movie = new Movie(name_ru, name_en, genre_ru, genre_en, year, title_ru, title_en, country_ru,
-                        country_en, duration, cast_ru, cast_en, awards_ru, awards_en, tvSerial, image);
+                movie = new Movie(nameRu, nameEn, genreRu, genreEn, year, titleRu, titleEn, countryRu,
+                        countryEn, duration, castRu, castEn, awardsRu, awardsEn, tvSerial, image);
             }
         } catch (SQLException e) {
             log.error(Messages.MOVIE_READ_BY_ID_ERROR, e);
@@ -108,7 +109,7 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
     }
 
     @Override
-    public ArrayList<Movie> readByPage(int page) throws DAOException {
+    public List<Movie> read(int page, String name) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -116,24 +117,30 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
         ArrayList<Movie> movieList = new ArrayList<>();
         try {
             con = manager.getConnection();
-            stmt = con.prepareStatement(SQL_READ_MOVIES_FOR_PAGE);
-
-            stmt.setInt(1, page);
+            if (name == null) {
+                stmt = con.prepareStatement(SQL_READ_MOVIES_FOR_PAGE);
+                stmt.setInt(1, page);
+            }
+            else {
+                stmt = con.prepareStatement(SQL_READ_MOVIES_BY_NAME);
+                stmt.setString(1, name);
+                stmt.setString(2, name);
+            }
 
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(Fields.MOVIE_ID);
-                String name_ru = rs.getString(Fields.MOVIE_NAME_RU);
-                String name_en = rs.getString(Fields.MOVIE_NAME_EN);
-                String title_ru = rs.getString(Fields.MOVIE_TITLE_RU);
-                String title_en = rs.getString(Fields.MOVIE_TITLE_EN);
+                String nameRu = rs.getString(Fields.MOVIE_NAME_RU);
+                String nameEn = rs.getString(Fields.MOVIE_NAME_EN);
+                String titleRu = rs.getString(Fields.MOVIE_TITLE_RU);
+                String titleEn = rs.getString(Fields.MOVIE_TITLE_EN);
                 String image = rs.getString(Fields.MOVIE_IMAGE);
                 Movie movie = new Movie();
                 movie.setId(id);
-                movie.setName_ru(name_ru);
-                movie.setName_en(name_en);
-                movie.setTitle_ru(title_ru);
-                movie.setTitle_en(title_en);
+                movie.setNameRu(nameRu);
+                movie.setNameEn(nameEn);
+                movie.setTitleRu(titleRu);
+                movie.setTitleEn(titleEn);
                 movie.setImage(image);
 
                 movieList.add(movie);
@@ -144,49 +151,6 @@ public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
         } finally {
             close(rs);
             close(stmt);
-            close(con);
-        }
-        return movieList;
-    }
-
-    @Override
-    public ArrayList<Movie> read(String name) throws DAOException {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        ArrayList<Movie> movieList = new ArrayList<>();
-        try {
-            con = manager.getConnection();
-            stmt = con.prepareStatement(SQL_READ_MOVIES_BY_NAME);
-
-            stmt.setString(1, name);
-            stmt.setString(2, name);
-
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(Fields.MOVIE_ID);
-                String name_ru = rs.getString(Fields.MOVIE_NAME_RU);
-                String name_en = rs.getString(Fields.MOVIE_NAME_EN);
-                String title_ru = rs.getString(Fields.MOVIE_TITLE_RU);
-                String title_en = rs.getString(Fields.MOVIE_TITLE_EN);
-                String image = rs.getString(Fields.MOVIE_IMAGE);
-                Movie movie = new Movie();
-                movie.setId(id);
-                movie.setName_ru(name_ru);
-                movie.setName_en(name_en);
-                movie.setTitle_ru(title_ru);
-                movie.setTitle_en(title_en);
-                movie.setImage(image);
-
-                movieList.add(movie);
-            }
-        } catch (SQLException e) {
-            log.error(Messages.MOVIE_READ_ALL_MOVIES, e);
-            throw new DAOException(Messages.MOVIE_READ_ALL_MOVIES, e);
-        } finally {
-            close(stmt);
-            close(rs);
             close(con);
         }
         return movieList;

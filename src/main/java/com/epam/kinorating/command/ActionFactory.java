@@ -1,6 +1,8 @@
 package com.epam.kinorating.command;
 
 public class ActionFactory {
+    private ActionFactory() {}
+
     public static Command defineCommand(String commandName) {
         Command current;
 

@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     private static final Logger log = Logger.getLogger(UserDAOImpl.class);
@@ -25,7 +26,7 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     private static final String SQL_CHECK_MAIL = "SELECT EXISTS (SELECT * FROM user WHERE mail =?)";
 
     @Override
-    public int create(User user) throws DAOException {
+    public int create(User user) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -58,7 +59,7 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     }
 
     @Override
-    public User read(String name, String password) throws DAOException {
+    public User read(String name, String password) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -97,7 +98,7 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     }
 
     @Override
-    public String read(String name) throws DAOException {
+    public String read(String name) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -125,21 +126,25 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     }
 
     @Override
-    public int checkName(String name) throws DAOException {
+    public int check(String name, String mail) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        int checkName = 0;
+        int check = 0;
         try {
             con = manager.getConnection();
-            stmt = con.prepareStatement(SQL_CHECK_NAME);
-
-            stmt.setString(1, name);
+            if (mail == null) {
+                stmt = con.prepareStatement(SQL_CHECK_NAME);
+                stmt.setString(1, name);
+            } else {
+                stmt = con.prepareStatement(SQL_CHECK_MAIL);
+                stmt.setString(1, mail);
+            }
 
             rs = stmt.executeQuery();
             if (rs.next()) {
-                checkName = rs.getInt(1);
+                check = rs.getInt(1);
             }
         } catch (SQLException e) {
             log.error(Messages.USER_CHECK_NAME_ERROR, e);
@@ -149,39 +154,11 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
             close(rs);
             close(con);
         }
-        return checkName;
+        return check;
     }
 
     @Override
-    public int checkMail(String mail) throws DAOException {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        int checkMail = 0;
-        try {
-            con = manager.getConnection();
-            stmt = con.prepareStatement(SQL_CHECK_MAIL);
-
-            stmt.setString(1, mail);
-
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                checkMail = rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            log.error(Messages.USER_CHECK_MAIL_ERROR, e);
-            throw new DAOException(Messages.USER_CHECK_MAIL_ERROR, e);
-        } finally {
-            close(stmt);
-            close(rs);
-            close(con);
-        }
-        return checkMail;
-    }
-
-    @Override
-    public boolean update(User user) throws DAOException {
+    public boolean update(User user) {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
@@ -204,12 +181,12 @@ public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
     }
 
     @Override
-    public ArrayList<User> readAll() throws DAOException {
+    public List<User> readAll() {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        ArrayList<User> userList = new ArrayList<User>();
+        ArrayList<User> userList = new ArrayList<>();
         try {
             con = manager.getConnection();
             stmt = con.prepareStatement(SQL_READ_ALL_USERS);

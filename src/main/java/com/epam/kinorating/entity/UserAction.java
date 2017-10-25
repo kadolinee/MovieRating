@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class UserAction implements Serializable{
-    private int ID;
-    private int userID;
-    private int movieID;
+    private int id;
+    private int userId;
+    private int movieId;
     private int rating;
     private String review;
     private Date dateValuation;
@@ -21,42 +21,42 @@ public class UserAction implements Serializable{
         this.dateReview = dateReview;
     }
 
-    public UserAction(int userID, int movieID, int rating, Date dateValuation) {
-        this.userID = userID;
-        this.movieID = movieID;
+    public UserAction(int userId, int movieId, int rating, Date dateValuation) {
+        this.userId = userId;
+        this.movieId = movieId;
         this.rating = rating;
         this.dateValuation = dateValuation;
     }
 
-    public UserAction(int userID, int movieID, String review, Date dateReview) {
-        this.userID = userID;
-        this.movieID = movieID;
+    public UserAction(int userId, int movieId, String review, Date dateReview) {
+        this.userId = userId;
+        this.movieId = movieId;
         this.review = review;
         this.dateReview = dateReview;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getMovieID() {
-        return movieID;
+    public int getMovieId() {
+        return movieId;
     }
 
-    public void setMovieID(int movieID) {
-        this.movieID = movieID;
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 
     public int getRating() {

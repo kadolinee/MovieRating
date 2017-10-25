@@ -2,15 +2,12 @@ package com.epam.kinorating.db.dao;
 
 import com.epam.kinorating.entity.User;
 
-import java.sql.Connection;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface UserDAO {
     boolean update(User user);
 
-    int checkName(String name);
-
-    int checkMail(String mail);
+    int check(String name, String mail);
 
     String read(String name);
 
@@ -18,5 +15,5 @@ public interface UserDAO {
 
     int create(User user);
 
-    ArrayList<User> readAll();
+    List<User> readAll();
 }

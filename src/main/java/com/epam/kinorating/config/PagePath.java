@@ -1,6 +1,8 @@
 package com.epam.kinorating.config;
 
 public class PagePath {
+    private PagePath() {}
+
     public static final String PAGE_INDEX = "/index.jsp";
     public static final String PAGE_ADD_MOVIE = "WEB-INF/jsp/addMovie.jsp";
     public static final String PAGE_EDIT_USER = "WEB-INF/jsp/editUser.jsp";

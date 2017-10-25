@@ -39,8 +39,8 @@ public abstract class AbstractDAOImpl implements AbstractDAO {
             try {
                 conn.close();
             } catch (SQLException e) {
-                log.error("Exception occurred during closing statement", e);
-                throw new DAOException("Exception occurred during closing statement", e);
+                log.error("Exception occurred during closing connection", e);
+                throw new DAOException("Exception occurred during closing connection", e);
             }
         }
     }

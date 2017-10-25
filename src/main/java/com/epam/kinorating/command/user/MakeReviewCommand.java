@@ -13,7 +13,6 @@ import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.sql.Date;
 
 public class MakeReviewCommand implements Command{

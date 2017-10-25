@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserActionDAOImpl extends AbstractDAOImpl implements UserActionDAO {
     private static final Logger log = Logger.getLogger(UserActionDAOImpl.class);
@@ -21,7 +22,7 @@ public class UserActionDAOImpl extends AbstractDAOImpl implements UserActionDAO 
     private static final String SQL_IS_RATED = "SELECT EXISTS (SELECT * FROM user_action WHERE user_id=? AND movie_id=? AND rating != 0)";
 
     @Override
-    public boolean create(UserAction userAction) throws DAOException {
+    public boolean create(UserAction userAction) {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
@@ -47,7 +48,7 @@ public class UserActionDAOImpl extends AbstractDAOImpl implements UserActionDAO 
     }
 
     @Override
-    public ArrayList<UserAction> readAll(int movieId) throws DAOException {
+    public List<UserAction> readAll(int movieId) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;

@@ -15,6 +15,7 @@
 </head>
 <body>
     <jsp:include page="_header.jsp"></jsp:include>
+
     <div class="movie clearfix">
         <div class="element_movie"></div>
         <c:if test="${isRated eq false and user ne null}">

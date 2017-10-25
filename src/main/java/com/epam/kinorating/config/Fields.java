@@ -1,6 +1,8 @@
 package com.epam.kinorating.config;
 
 public class Fields {
+    private Fields() {}
+
     public static final String MOVIE_ID = "id";
     public static final String MOVIE_NAME_RU = "name_ru";
     public static final String MOVIE_NAME_EN = "name_en";

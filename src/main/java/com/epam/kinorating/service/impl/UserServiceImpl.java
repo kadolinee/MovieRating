@@ -29,7 +29,7 @@ public class UserServiceImpl extends AbstractDAOImpl implements UserService{
             if (salt == null) {
                 return null;
             } else {
-                String encryptPassword = Encryptor.get_SHA_512_SecurePassword(password, Encryptor.convertStringToArray(salt));
+                String encryptPassword = Encryptor.getSHA512SecurePassword(password, Encryptor.convertStringToArray(salt));
 
                 return userDAO.read(name, encryptPassword);
             }
@@ -44,7 +44,7 @@ public class UserServiceImpl extends AbstractDAOImpl implements UserService{
     public int add(User user) throws ServiceException {
         try {
             byte[] saltArray = Encryptor.getSalt();
-            String securePassword = Encryptor.get_SHA_512_SecurePassword(user.getPassword(), saltArray);
+            String securePassword = Encryptor.getSHA512SecurePassword(user.getPassword(), saltArray);
 
             user.setSalt(Encryptor.convertArrayToString(saltArray));
             user.setPassword(securePassword);

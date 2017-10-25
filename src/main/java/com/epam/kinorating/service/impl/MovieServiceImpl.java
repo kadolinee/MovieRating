@@ -21,16 +21,6 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public ArrayList<Movie> find(String name) throws ServiceException {
-        try {
-            return movieDAO.read(name);
-        } catch (DAOException e) {
-            log.error("Invalid service operation occurred during finding movies", e);
-            throw new ServiceException("Invalid service operation occurred during finding movies", e);
-        }
-    }
-
-    @Override
     public Movie find(int id) throws ServiceException {
         try {
             return movieDAO.read(id);
@@ -51,9 +41,9 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public ArrayList<Movie> findAll(int page) throws ServiceException {
+    public ArrayList<Movie> find(int page, String name) throws ServiceException {
         try {
-            return movieDAO.readByPage(page);
+            return movieDAO.read(page, name);
         } catch (DAOException e) {
             log.error("Invalid service operation occurred during finding all movies", e);
             throw new ServiceException("Invalid service operation occurred during finding all movies", e);

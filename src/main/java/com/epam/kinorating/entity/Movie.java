@@ -11,56 +11,55 @@ public class Movie implements Serializable{
     @Id
     private int id;
 
-    private String name_ru;
-    private String name_en;
-    private String genre_ru;
-    private String genre_en;
+    private String nameRu;
+    private String nameEn;
+    private String genreRu;
+    private String genreEn;
     private int year;
-    private String title_ru;
-    private String title_en;
-    private String country_ru;
-    private String country_en;
+    private String titleRu;
+    private String titleEn;
+    private String countryRu;
+    private String countryEn;
     private int duration;
-    private String cast_ru;
-    private String cast_en;
-    private String awards_ru;
-    private String awards_en;
+    private String castRu;
+    private String castEn;
+    private String awardsRu;
+    private String awardsEn;
     private String image;
     private boolean tvSerial;
 
     public Movie() {}
 
-    public Movie(String name_ru, String name_en, String genre_ru, String genre_en, int year, String title_ru,
-                 String title_en, String country_ru, String country_en, int duration, String cast_ru, String cast_en,
-                 String awards_ru, String awards_en, boolean tvSerial, String image) {
-        this.name_ru = name_ru;
-        this.name_en = name_en;
-        this.genre_ru = genre_ru;
-        this.genre_en = genre_en;
+    public Movie(String nameRu, String nameEn, String genreRu, String genreEn, int year, String titleRu,
+                 String titleEn, String countryRu, String countryEn, int duration, String castRu, String castEn,
+                 String awardsRu, String awardsEn, boolean tvSerial, String image) {
+        this.nameRu = nameRu;
+        this.nameEn = nameEn;
+        this.genreRu = genreRu;
+        this.genreEn = genreEn;
         this.year = year;
-        this.title_ru = title_ru;
-        this.title_en = title_en;
-        this.country_ru = country_ru;
-        this.country_en = country_en;
+        this.titleRu = titleRu;
+        this.titleEn = titleEn;
+        this.countryRu = countryRu;
+        this.countryEn = countryEn;
         this.duration = duration;
-        this.cast_ru = cast_ru;
-        this.cast_en = cast_en;
-        this.awards_ru = awards_ru;
-        this.awards_en = awards_en;
+        this.castRu = castRu;
+        this.castEn = castEn;
+        this.awardsRu = awardsRu;
+        this.awardsEn = awardsEn;
         this.image = image;
         this.tvSerial = tvSerial;
     }
 
-    public Movie(int id, String name_ru, String name_en, String genre_ru, String genre_en, int year,
-                 String country_ru, String country_en) {
+
+    public Movie(int id, String nameRu, String nameEn, String genreRu, String genreEn, String countryRu, String countryEn) {
         this.id = id;
-        this.name_ru = name_ru;
-        this.name_en = name_en;
-        this.genre_ru = genre_ru;
-        this.genre_en = genre_en;
-        this.year = year;
-        this.country_ru = country_ru;
-        this.country_en = country_en;
+        this.nameRu = nameRu;
+        this.nameEn = nameEn;
+        this.genreRu = genreRu;
+        this.genreEn = genreEn;
+        this.countryRu = countryRu;
+        this.countryEn = countryEn;
     }
 
     public int getId() {
@@ -71,36 +70,36 @@ public class Movie implements Serializable{
         this.id = id;
     }
 
-    public String getName_ru() {
-        return name_ru;
+    public String getNameRu() {
+        return nameRu;
     }
 
-    public void setName_ru(String name_ru) {
-        this.name_ru = name_ru;
+    public void setNameRu(String nameRu) {
+        this.nameRu = nameRu;
     }
 
-    public String getName_en() {
-        return name_en;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName_en(String name_en) {
-        this.name_en = name_en;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getGenre_ru() {
-        return genre_ru;
+    public String getGenreRu() {
+        return genreRu;
     }
 
-    public void setGenre_ru(String genre_ru) {
-        this.genre_ru = genre_ru;
+    public void setGenreRu(String genreRu) {
+        this.genreRu = genreRu;
     }
 
-    public String getGenre_en() {
-        return genre_en;
+    public String getGenreEn() {
+        return genreEn;
     }
 
-    public void setGenre_en(String genre_en) {
-        this.genre_en = genre_en;
+    public void setGenreEn(String genreEn) {
+        this.genreEn = genreEn;
     }
 
     public int getYear() {
@@ -111,36 +110,36 @@ public class Movie implements Serializable{
         this.year = year;
     }
 
-    public String getTitle_ru() {
-        return title_ru;
+    public String getTitleRu() {
+        return titleRu;
     }
 
-    public void setTitle_ru(String title_ru) {
-        this.title_ru = title_ru;
+    public void setTitleRu(String titleRu) {
+        this.titleRu = titleRu;
     }
 
-    public String getTitle_en() {
-        return title_en;
+    public String getTitleEn() {
+        return titleEn;
     }
 
-    public void setTitle_en(String title_en) {
-        this.title_en = title_en;
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
     }
 
-    public String getCountry_ru() {
-        return country_ru;
+    public String getCountryRu() {
+        return countryRu;
     }
 
-    public void setCountry_ru(String country_ru) {
-        this.country_ru = country_ru;
+    public void setCountryRu(String countryRu) {
+        this.countryRu = countryRu;
     }
 
-    public String getCountry_en() {
-        return country_en;
+    public String getCountryEn() {
+        return countryEn;
     }
 
-    public void setCountry_en(String country_en) {
-        this.country_en = country_en;
+    public void setCountryEn(String countryEn) {
+        this.countryEn = countryEn;
     }
 
     public int getDuration() {
@@ -151,36 +150,36 @@ public class Movie implements Serializable{
         this.duration = duration;
     }
 
-    public String getCast_ru() {
-        return cast_ru;
+    public String getCastRu() {
+        return castRu;
     }
 
-    public void setCast_ru(String cast_ru) {
-        this.cast_ru = cast_ru;
+    public void setCastRu(String castRu) {
+        this.castRu = castRu;
     }
 
-    public String getCast_en() {
-        return cast_en;
+    public String getCastEn() {
+        return castEn;
     }
 
-    public void setCast_en(String cast_en) {
-        this.cast_en = cast_en;
+    public void setCastEn(String castEn) {
+        this.castEn = castEn;
     }
 
-    public String getAwards_ru() {
-        return awards_ru;
+    public String getAwardsRu() {
+        return awardsRu;
     }
 
-    public void setAwards_ru(String awards_ru) {
-        this.awards_ru = awards_ru;
+    public void setAwardsRu(String awardsRu) {
+        this.awardsRu = awardsRu;
     }
 
-    public String getAwards_en() {
-        return awards_en;
+    public String getAwardsEn() {
+        return awardsEn;
     }
 
-    public void setAwards_en(String awards_en) {
-        this.awards_en = awards_en;
+    public void setAwardsEn(String awardsEn) {
+        this.awardsEn = awardsEn;
     }
 
     public String getImage() {
@@ -198,5 +197,4 @@ public class Movie implements Serializable{
     public void setTvSerial(boolean tvSerial) {
         this.tvSerial = tvSerial;
     }
-
 }

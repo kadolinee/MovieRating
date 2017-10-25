@@ -20,26 +20,26 @@ public class AddMovieCommand implements Command{
     @Override
     public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
                           UserActionService userActionService) {
-        String name_ru = request.getParameter(Attribute.ATTRIBUTE_NAME_RU);
-        String name_en = request.getParameter(Attribute.ATTRIBUTE_NAME_EN);
-        String genre_ru = request.getParameter(Attribute.ATTRIBUTE_GENRE_RU);
-        String genre_en = request.getParameter(Attribute.ATTRIBUTE_GENRE_EN);
+        String nameRu = request.getParameter(Attribute.ATTRIBUTE_NAME_RU);
+        String nameEn = request.getParameter(Attribute.ATTRIBUTE_NAME_EN);
+        String genreRu = request.getParameter(Attribute.ATTRIBUTE_GENRE_RU);
+        String genreEn = request.getParameter(Attribute.ATTRIBUTE_GENRE_EN);
         int year = Integer.parseInt(request.getParameter(Attribute.ATTRIBUTE_YEAR));
-        String title_ru = request.getParameter(Attribute.ATTRIBUTE_TITLE_RU);
-        String title_en = request.getParameter(Attribute.ATTRIBUTE_TITLE_EN);
-        String country_ru = request.getParameter(Attribute.ATTRIBUTE_COUNTRY_RU);
-        String country_en = request.getParameter(Attribute.ATTRIBUTE_COUNTRY_EN);
+        String titleRu = request.getParameter(Attribute.ATTRIBUTE_TITLE_RU);
+        String titleEn = request.getParameter(Attribute.ATTRIBUTE_TITLE_EN);
+        String countryRu = request.getParameter(Attribute.ATTRIBUTE_COUNTRY_RU);
+        String countryEn = request.getParameter(Attribute.ATTRIBUTE_COUNTRY_EN);
         int duration = Integer.parseInt(request.getParameter(Attribute.ATTRIBUTE_DURATION));
-        String cast_ru = request.getParameter(Attribute.ATTRIBUTE_CAST_RU);
-        String cast_en = request.getParameter(Attribute.ATTRIBUTE_CAST_EN);
-        String awards_ru = request.getParameter(Attribute.ATTRIBUTE_AWARDS_RU);
-        String awards_en = request.getParameter(Attribute.ATTRIBUTE_AWARDS_EN);
+        String castRu = request.getParameter(Attribute.ATTRIBUTE_CAST_RU);
+        String castEn = request.getParameter(Attribute.ATTRIBUTE_CAST_EN);
+        String awardsRu = request.getParameter(Attribute.ATTRIBUTE_AWARDS_RU);
+        String awardsEn = request.getParameter(Attribute.ATTRIBUTE_AWARDS_EN);
         String image = request.getParameter(Attribute.ATTRIBUTE_IMAGE);
         String tvSerialCheckBox = request.getParameter(Attribute.ATTRIBUTE_TVSERIAL);
         boolean tvSerial = "true".equals(tvSerialCheckBox);
 
-        Movie movie = new Movie(name_ru, name_en, genre_ru, genre_en, year, title_ru, title_en, country_ru, country_en,
-                duration, cast_ru, cast_en, awards_ru, awards_en, tvSerial, image);
+        Movie movie = new Movie(nameRu, nameEn, genreRu, genreEn, year, titleRu, titleEn, countryRu, countryEn,
+                duration, castRu, castEn, awardsRu, awardsEn, tvSerial, image);
         try {
             movieService.add(movie);
         } catch (ServiceException e) {

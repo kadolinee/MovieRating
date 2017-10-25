@@ -1,11 +1,18 @@
 package com.epam.kinorating.encryptor;
 
+import com.epam.kinorating.config.Messages;
+import org.apache.log4j.Logger;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class Encryptor {
-    public static String get_SHA_512_SecurePassword(String passwordToHash, byte[] salt) {
+    private Encryptor() {}
+
+    private static final Logger log = Logger.getLogger(Encryptor.class);
+
+    public static String getSHA512SecurePassword(String passwordToHash, byte[] salt) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -19,7 +26,7 @@ public class Encryptor {
             generatedPassword = sb.toString();
         }
         catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error(Messages.ENCRYPTOR_GET_PWD_ERROR, e);
         }
         return generatedPassword;
     }
@@ -35,16 +42,16 @@ public class Encryptor {
 
             return salt;
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error(Messages.ENCRYPTOR_GET_SALT_ERROR, e);
         }
         return salt;
     }
 
     public static String convertArrayToString(byte[] array) {
-        String str = "";
-
+        String str = null;
         for (byte anArray : array) {
-            str = str + anArray + " ";
+
+            str = new StringBuilder().append(str).append(anArray).append(" ").toString();
         }
         return str;
     }
