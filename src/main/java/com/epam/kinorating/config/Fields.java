@@ -35,4 +35,6 @@ public class Fields {
     public static final String USER_SALT = "salt";
     public static final String USER_ROLE_ID = "role_id";
 
+    public static final String COMMAND = "command";
+
 }

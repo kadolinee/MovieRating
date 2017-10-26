@@ -9,8 +9,6 @@ import com.epam.kinorating.entity.User;
 import com.epam.kinorating.entity.UserAction;
 import com.epam.kinorating.exception.ServiceException;
 import com.epam.kinorating.service.MovieService;
-import com.epam.kinorating.service.UserActionService;
-import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +20,9 @@ public class GoToMovieCommand implements Command{
     private final Logger log = Logger.getLogger(GoToMovieCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
-                          UserActionService userActionService) {
+    public String execute(HttpServletRequest request) {
         int movieId = Integer.parseInt(request.getParameter(Attribute.ATTRIBUTE_MOVIE_ID));
-        Movie movie = movieService.find(movieId);
+        Movie movie = MovieService.find(movieId);
         movie.setId(movieId);
 
         HttpSession session = request.getSession();

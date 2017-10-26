@@ -1,6 +1,7 @@
 package com.epam.kinorating.filter;
 
 import com.epam.kinorating.config.Attribute;
+import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.User;
 
 import javax.servlet.*;
@@ -35,17 +36,22 @@ public class AccessFilter implements Filter {
         User user = (User) req.getSession().getAttribute(Attribute.ATTRIBUTE_USER);
 
         if (user == null && illegalForGuest.contains(commandName)) {
-            resp.sendRedirect("controller?command=goToError");
+            resp.sendRedirect(PagePath.PAGE_ERROR);
         }
         if (user != null) {
-            if (user.getRoleId() == 2 && illegalForUser.contains(commandName)) {
-                resp.sendRedirect("controller?command=goToError");
-            } else if (user.getRoleId() == 1 && illegalForAdmin.contains(commandName)){
-                resp.sendRedirect("controller?command=goToError");
+            if (user.getRoleId() != 2 || !illegalForUser.contains(commandName)) {
+                if (user.getRoleId() == 1 && illegalForAdmin.contains(commandName)){
+                    resp.sendRedirect(PagePath.PAGE_ERROR);
+                }
+            } else {
+                resp.sendRedirect(PagePath.PAGE_ERROR);
             }
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }
+
+    @Override
+    public void destroy() {}
 
     private List<String> asList(String str) {
         String[] array = str.split(" ");
@@ -56,8 +62,4 @@ public class AccessFilter implements Filter {
         return list;
     }
 
-    @Override
-    public void destroy() {
-
-    }
 }

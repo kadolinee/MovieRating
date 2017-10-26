@@ -7,9 +7,6 @@ import com.epam.kinorating.config.Messages;
 import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.User;
 import com.epam.kinorating.exception.ServiceException;
-import com.epam.kinorating.service.MovieService;
-import com.epam.kinorating.service.UserActionService;
-import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

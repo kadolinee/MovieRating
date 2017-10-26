@@ -2,6 +2,7 @@ package com.epam.kinorating.db.dao.impl;
 
 import com.epam.kinorating.config.Fields;
 import com.epam.kinorating.config.Messages;
+import com.epam.kinorating.db.dao.AbstractDAO;
 import com.epam.kinorating.db.dao.UserActionDAO;
 import com.epam.kinorating.db.manager.DBManager;
 import com.epam.kinorating.entity.UserAction;
@@ -12,16 +13,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserActionDAOImpl extends AbstractDAOImpl implements UserActionDAO {
+public class UserActionDAOImpl extends AbstractDAO implements UserActionDAO {
     private static final Logger log = Logger.getLogger(UserActionDAOImpl.class);
 
-    private DBManager manager = DBManager.getInstance();
+    public UserActionDAOImpl() {
+        this.manager = DBManager.getInstance();
+    }
 
     private static final String SQL_INSERT_USER_ACTION = "INSERT INTO user_action(user_id, movie_id, rating, review, date_valuation, date_create_review) VALUES (?,?,?,?,?,?)";
     private static final String SQL_READ_ALL_USER_ACTION = "SELECT rating, review, date_valuation, date_create_review FROM user_action WHERE movie_id=?";
     private static final String SQL_IS_RATED = "SELECT EXISTS (SELECT * FROM user_action WHERE user_id=? AND movie_id=? AND rating != 0)";
 
-    @Override
+
     public boolean create(UserAction userAction) {
         Connection con = null;
         PreparedStatement stmt = null;
@@ -29,8 +32,8 @@ public class UserActionDAOImpl extends AbstractDAOImpl implements UserActionDAO 
             con = manager.getConnection();
             stmt = con.prepareStatement(SQL_INSERT_USER_ACTION);
 
-            stmt.setInt(1, userAction.getUserID());
-            stmt.setInt(2, userAction.getMovieID());
+            stmt.setInt(1, userAction.getUserId());
+            stmt.setInt(2, userAction.getMovieId());
             stmt.setInt(3, userAction.getRating());
             stmt.setString(4, userAction.getReview());
             stmt.setDate(5, userAction.getDateValuation());

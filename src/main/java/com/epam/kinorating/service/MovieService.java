@@ -1,12 +1,45 @@
 package com.epam.kinorating.service;
 
+import com.epam.kinorating.db.dao.MovieDAO;
+import com.epam.kinorating.db.dao.impl.MovieDAOImpl;
 import com.epam.kinorating.entity.Movie;
+import com.epam.kinorating.exception.DAOException;
+import com.epam.kinorating.exception.ServiceException;
+import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public interface MovieService {
-    ArrayList<Movie> find(int page, String name);
-    Movie find(int id);
-    boolean add(Movie movie);
+public class MovieService {
+    private static final Logger log = Logger.getLogger(MovieService.class);
 
+    private static MovieDAO movieDAO = new MovieDAOImpl();
+
+    private MovieService() {}
+
+    public static Movie find(int id) {
+        try {
+            return movieDAO.read(id);
+        } catch (DAOException e) {
+            log.error("Invalid service operation occurred during finding movie", e);
+            throw new ServiceException("Invalid service operation occurred during finding movie", e);
+        }
+    }
+
+    public static boolean add(Movie movie) {
+        try {
+            return movieDAO.create(movie);
+        } catch (DAOException e) {
+            log.error("Invalid service operation occurred during adding movie", e);
+            throw new ServiceException("Invalid service operation occurred during adding movie", e);
+        }
+    }
+
+    public static List<Movie> find(int page, String name) {
+        try {
+            return movieDAO.read(page, name);
+        } catch (DAOException e) {
+            log.error("Invalid service operation occurred during finding all movies", e);
+            throw new ServiceException("Invalid service operation occurred during finding all movies", e);
+        }
+    }
 }

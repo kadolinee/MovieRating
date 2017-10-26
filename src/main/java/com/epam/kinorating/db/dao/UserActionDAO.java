@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface UserActionDAO {
     boolean create(UserAction userAction);
-
     List<UserAction> readAll(int movieId);
-
     int isRated(int userId, int movieId);
+
 }

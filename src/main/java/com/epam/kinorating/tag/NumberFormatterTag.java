@@ -1,5 +1,7 @@
 package com.epam.kinorating.tag;
 
+import org.apache.log4j.Logger;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.SkipPageException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -7,6 +9,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class NumberFormatterTag extends SimpleTagSupport {
+    private static final Logger log = Logger.getLogger(NumberFormatterTag.class);
+
     private String format;
     private String number;
 
@@ -28,7 +32,7 @@ public class NumberFormatterTag extends SimpleTagSupport {
 
             getJspContext().getOut().write(formattedNumber);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Got a problem with the custom tag", e);
             throw new SkipPageException("Exception in formatting " + number + " with format " + format);
         }
     }

@@ -15,10 +15,21 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DBManager {
     private static final Logger log = Logger.getLogger(DBManager.class);
     private static DBManager instance;
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
     private DataSource ds;
 
-    public static DBManager getInstance() throws DBException {
+    private DBManager() {
+        try {
+            Context initContext = new InitialContext();
+            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/movieRating");
+            log.trace("Data source ==> " + ds);
+        } catch (NamingException e) {
+            log.error("Cannot obtain data source", e);
+            throw new DBException("Cannot obtain data source", e);
+        }
+    }
+
+    public static DBManager getInstance() {
         try {
             lock.lock();
             if (instance == null) {
@@ -30,24 +41,13 @@ public class DBManager {
         return instance;
     }
 
-    private DBManager() {
-        try {
-            Context initContext = new InitialContext();
-            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/movieRating");
-            log.trace("Data source ==> " + ds);
-        } catch (NamingException ex) {
-            log.error("Cannot obtain data source", ex);
-            throw new DBException("Cannot obtain data source", ex);
-        }
-    }
-
     public Connection getConnection() {
         Connection con;
         try {
             con = ds.getConnection();
-        } catch (SQLException ex) {
-            log.error("Error cannot obtain connection", ex);
-            throw new DBException("Error cannot obtain connection", ex);
+        } catch (SQLException e) {
+            log.error("Error cannot obtain connection", e);
+            throw new DBException("Error cannot obtain connection", e);
         }
         return con;
     }

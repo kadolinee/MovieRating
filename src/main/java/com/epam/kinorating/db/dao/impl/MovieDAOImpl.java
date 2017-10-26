@@ -2,6 +2,7 @@ package com.epam.kinorating.db.dao.impl;
 
 import com.epam.kinorating.config.Fields;
 import com.epam.kinorating.config.Messages;
+import com.epam.kinorating.db.dao.AbstractDAO;
 import com.epam.kinorating.db.dao.MovieDAO;
 import com.epam.kinorating.db.manager.DBManager;
 import com.epam.kinorating.entity.Movie;
@@ -15,10 +16,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAOImpl extends AbstractDAOImpl implements MovieDAO {
+public class MovieDAOImpl extends AbstractDAO implements MovieDAO {
     private static final Logger log = Logger.getLogger(MovieDAOImpl.class);
 
-    private DBManager manager = DBManager.getInstance();
+    public MovieDAOImpl() {
+        this.manager = DBManager.getInstance();
+    }
 
     private static final String SQL_CREATE_MOVIE = "INSERT INTO movie(name_ru, name_en, genre_ru, genre_en, year, title_ru, title_en, country_ru, country_en, duration, cast_ru, cast_en, awards_ru, awards_en, tv_serial, image)" +
             " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

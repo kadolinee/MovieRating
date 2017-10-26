@@ -4,9 +4,6 @@ import com.epam.kinorating.command.Command;
 import com.epam.kinorating.config.Attribute;
 import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.User;
-import com.epam.kinorating.service.MovieService;
-import com.epam.kinorating.service.UserActionService;
-import com.epam.kinorating.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 

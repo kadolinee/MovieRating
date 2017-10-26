@@ -1,9 +1,6 @@
 package com.epam.kinorating.command;
 
 import com.epam.kinorating.config.PagePath;
-import com.epam.kinorating.service.MovieService;
-import com.epam.kinorating.service.UserActionService;
-import com.epam.kinorating.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 

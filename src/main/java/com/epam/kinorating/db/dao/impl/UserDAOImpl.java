@@ -2,6 +2,7 @@ package com.epam.kinorating.db.dao.impl;
 
 import com.epam.kinorating.config.Fields;
 import com.epam.kinorating.config.Messages;
+import com.epam.kinorating.db.dao.AbstractDAO;
 import com.epam.kinorating.db.dao.UserDAO;
 import com.epam.kinorating.db.manager.DBManager;
 import com.epam.kinorating.entity.User;
@@ -12,10 +13,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
+public class UserDAOImpl extends AbstractDAO implements UserDAO {
     private static final Logger log = Logger.getLogger(UserDAOImpl.class);
 
-    private DBManager manager = DBManager.getInstance();
+    public UserDAOImpl() {
+        this.manager = DBManager.getInstance();
+    }
 
     private static final String SQL_INSERT_USER = "INSERT INTO user(name, mail, password, date_create, salt) VALUES (?,?,?,?,?)";
     private static final String SQL_UPDATE_USER = "UPDATE user SET rating=?, banned=?  WHERE id=?";

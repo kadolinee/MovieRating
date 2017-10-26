@@ -1,11 +1,46 @@
 package com.epam.kinorating.db.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import com.epam.kinorating.db.manager.DBManager;
+import com.epam.kinorating.exception.DAOException;
+import org.apache.log4j.Logger;
 
-public interface AbstractDAO {
-    void close(ResultSet rs);
-    void close(PreparedStatement stmt);
-    void close(Connection conn);
+import java.sql.*;
+
+public abstract class AbstractDAO {
+    private static final Logger log = Logger.getLogger(AbstractDAO.class);
+
+    protected DBManager manager;
+
+    protected void close(ResultSet rs) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                log.error("Exception occurred during closing result set", e);
+                throw new DAOException("Exception occurred during closing result set", e);
+            }
+        }
+    }
+
+    protected void close(PreparedStatement stmt) {
+        if (stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                log.error("Exception occurred during closing statement", e);
+                throw new DAOException("Exception occurred during closing statement", e);
+            }
+        }
+    }
+
+    protected void close(Connection conn) {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                log.error("Exception occurred during closing connection", e);
+                throw new DAOException("Exception occurred during closing connection", e);
+            }
+        }
+    }
 }

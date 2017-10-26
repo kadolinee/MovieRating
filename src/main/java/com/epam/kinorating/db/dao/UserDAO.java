@@ -5,15 +5,10 @@ import com.epam.kinorating.entity.User;
 import java.util.List;
 
 public interface UserDAO {
-    boolean update(User user);
-
-    int check(String name, String mail);
-
-    String read(String name);
-
-    User read(String name, String password);
-
     int create(User user);
-
+    User read(String name, String password);
+    String read(String name);
+    int check(String name, String mail);
+    boolean update(User user);
     List<User> readAll();
 }

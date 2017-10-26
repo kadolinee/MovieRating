@@ -2,7 +2,7 @@ package com.epam.kinorating.servlet;
 
 import com.epam.kinorating.db.dao.impl.UserDAOImpl;
 import com.epam.kinorating.service.UserService;
-import com.epam.kinorating.service.impl.UserServiceImpl;
+import com.epam.kinorating.service.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,19 +18,21 @@ public class CheckEnterMail extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        userService = new UserServiceImpl(new UserDAOImpl());
+        userService = new UserService(new UserDAOImpl());
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String mail = request.getParameter("mail");
-
+        String name = null;
         PrintWriter printWriter = response.getWriter();
 
-        if (!userService.isFreeMail(mail)) {
+        if (!userService.isFree(name, mail)) {
             printWriter.print("false");
         }
     }
