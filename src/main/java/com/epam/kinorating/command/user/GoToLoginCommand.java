@@ -4,12 +4,17 @@ import com.epam.kinorating.command.Command;
 import com.epam.kinorating.config.PagePath;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class GoToLoginCommand implements Command{
 
     @Override
-    public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
-                          UserActionService userActionService) {
+    public String execute(HttpServletRequest request) {
         return PagePath.PAGE_LOGIN;
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        //Do nothing because of I use another version of the overloaded method
     }
 }

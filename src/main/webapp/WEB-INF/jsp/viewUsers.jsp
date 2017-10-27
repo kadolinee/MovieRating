@@ -33,7 +33,7 @@
                         <td>${user.mail}</td>
                         <td>${user.rating}</td>
                         <td><a href="controller?command=goToEditUser&id=${user.id}&username=${user.name}&rating=${user.rating}"><button class="_button_table"><fmt:message key="EDITRATING"/></button></a></td>
-                        <td><a href="controller?command=banUser&id=${user.id}&rating=${user.rating}"><button class="_button_table"><fmt:message key="BAN"/></button></a></td>
+                        <td><a href="controller?command=banUser&id=${user.id}"><button class="_button_table"><fmt:message key="BAN"/></button></a></td>
                     </tr>
                 </c:forEach>
             </table>

@@ -1,7 +1,7 @@
 function checkExistMail() {
     var xmlhttp = new XMLHttpRequest();
     var mail = document.forms["registform"]["mail"].value;
-    var url = "checkmail?mail=" + mail;
+    var url = "controller?command=checkmail$=&mail=" + mail;
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             if ("false" == xmlhttp.responseText) {

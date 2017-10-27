@@ -6,24 +6,25 @@ import com.epam.kinorating.config.Messages;
 import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.User;
 import com.epam.kinorating.exception.ServiceException;
+import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginCommand implements Command {
     private final Logger log = Logger.getLogger(LoginCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
-                          UserActionService userActionService) {
+    public String execute(HttpServletRequest request) {
         String name = request.getParameter(Attribute.ATTRIBUTE_USERNAME);
         String password = request.getParameter(Attribute.ATTRIBUTE_PASSWORD);
         String page;
 
         User user;
         try {
-            user = userService.find(name, password);
+            user = UserService.find(name, password);
         } catch (ServiceException e) {
             log.error("Exception occurred in Login command ", e);
             request.setAttribute(Attribute.ATTRIBUTE_ERROR_MESSAGE, Messages.UNKNOWN_ERROR);
@@ -43,5 +44,10 @@ public class LoginCommand implements Command {
 
         return page;
 
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        //Do nothing because of I use another version of the overloaded method
     }
 }

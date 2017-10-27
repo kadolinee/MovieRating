@@ -7,16 +7,17 @@ import com.epam.kinorating.config.Messages;
 import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.Movie;
 import com.epam.kinorating.exception.ServiceException;
+import com.epam.kinorating.service.MovieService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class AddMovieCommand implements Command{
     private final Logger log = Logger.getLogger(SearchMovieCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
-                          UserActionService userActionService) {
+    public String execute(HttpServletRequest request) {
         String nameRu = request.getParameter(Attribute.ATTRIBUTE_NAME_RU);
         String nameEn = request.getParameter(Attribute.ATTRIBUTE_NAME_EN);
         String genreRu = request.getParameter(Attribute.ATTRIBUTE_GENRE_RU);
@@ -38,7 +39,7 @@ public class AddMovieCommand implements Command{
         Movie movie = new Movie(nameRu, nameEn, genreRu, genreEn, year, titleRu, titleEn, countryRu, countryEn,
                 duration, castRu, castEn, awardsRu, awardsEn, tvSerial, image);
         try {
-            movieService.add(movie);
+            MovieService.add(movie);
         } catch (ServiceException e) {
             log.error("Exception while adding movie " + e.getMessage());
             request.setAttribute(Attribute.ATTRIBUTE_ERROR_MESSAGE, Messages.UNKNOWN_ERROR);
@@ -46,5 +47,10 @@ public class AddMovieCommand implements Command{
         }
 
         return "controller?command=goToHome";
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        //Do nothing because of I use another version of the overloaded method
     }
 }

@@ -3,7 +3,7 @@ package com.epam.kinorating.command;
 import com.epam.kinorating.command.admin.*;
 import com.epam.kinorating.command.user.*;
 
-public enum CommandEnum {
+enum CommandEnum {
     LOGIN(new LoginCommand()),
     GOTOLOGIN(new GoToLoginCommand()),
     REGISTRATION(new RegistrationCommand()),
@@ -16,6 +16,8 @@ public enum CommandEnum {
     SEARCHMOVIE(new SearchMovieCommand()),
     GOTOACCOUNT(new GoToAccountCommand()),
     GOTOERROR(new GoToErrorCommand()),
+    CHECKMAIL(new CheckMailCommand()),
+    CHECKNAME(new CheckNameCommand()),
 
     ADDMOVIE(new AddMovieCommand()),
     GOTOADDMOVIE(new GoToAddMovieCommand()),

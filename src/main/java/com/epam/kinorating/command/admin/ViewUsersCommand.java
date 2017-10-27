@@ -7,20 +7,21 @@ import com.epam.kinorating.config.Messages;
 import com.epam.kinorating.config.PagePath;
 import com.epam.kinorating.entity.User;
 import com.epam.kinorating.exception.ServiceException;
+import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class ViewUsersCommand implements Command{
     private final Logger log = Logger.getLogger(SearchMovieCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, UserService userService, MovieService movieService,
-                          UserActionService userActionService) {
+    public String execute(HttpServletRequest request) {
         List<User> userList;
         try {
-            userList = userService.findAll();
+            userList = UserService.findAll();
         } catch(ServiceException e) {
             log.error("Exception while getting film by title ", e);
             request.setAttribute(Attribute.ATTRIBUTE_USER, Messages.UNKNOWN_ERROR);
@@ -30,5 +31,10 @@ public class ViewUsersCommand implements Command{
         request.setAttribute(Attribute.ATTRIBUTE_USER_LIST, userList);
 
         return PagePath.PAGE_VIEW_USERS;
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        //Do nothing because of I use another version of the overloaded method
     }
 }

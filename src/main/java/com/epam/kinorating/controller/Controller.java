@@ -35,6 +35,11 @@ public class Controller extends HttpServlet{
         try {
             Command command = ActionFactory.defineCommand(request.getParameter(Fields.COMMAND));
             page = command.execute(request);
+
+            if (page == null) {
+                command.execute(request, response);
+            }
+
             if (page != null) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(page);
                 dispatcher.forward(request, response);

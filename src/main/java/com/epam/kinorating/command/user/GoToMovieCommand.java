@@ -9,9 +9,11 @@ import com.epam.kinorating.entity.User;
 import com.epam.kinorating.entity.UserAction;
 import com.epam.kinorating.exception.ServiceException;
 import com.epam.kinorating.service.MovieService;
+import com.epam.kinorating.service.UserActionService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,13 +35,13 @@ public class GoToMovieCommand implements Command{
         ArrayList<UserAction> reviews;
         boolean isRated;
         try {
-            Map<String, Object> movieDetails = userActionService.getMovieDetails(movieId);
+            Map<String, Object> movieDetails = UserActionService.getMovieDetails(movieId);
             movieRating = (Double) movieDetails.get("movieRating");
             ratingsNumber = (Integer) movieDetails.get("ratingsNumber");
             reviews = (ArrayList<UserAction>) movieDetails.get("reviews");
             isRated = false;
             if (user != null) {
-                isRated = userActionService.isRated(user.getId(), movieId);
+                isRated = UserActionService.isRated(user.getId(), movieId);
             }
         } catch (ServiceException e) {
             log.error("Exception while doing rating ", e);
@@ -55,5 +57,10 @@ public class GoToMovieCommand implements Command{
         request.setAttribute(Attribute.ATTRIBUTE_RATINGS_NUMBER, ratingsNumber);
 
         return PagePath.PAGE_MOVIE;
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        //Do nothing because of I use another version of the overloaded method
     }
 }
