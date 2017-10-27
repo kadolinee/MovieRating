@@ -51,7 +51,9 @@ public class AccessFilter implements Filter {
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+        //Do nothing because nothing should happen when destroying
+    }
 
     private List<String> asList(String str) {
         String[] array = str.split(" ");

@@ -85,6 +85,8 @@ public class UserService {
                 case 9:
                     ratingChange = -1;
                     break;
+               default:
+                    break;
             }
         }
         return ratingChange;
