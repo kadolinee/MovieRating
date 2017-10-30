@@ -150,8 +150,8 @@ public class UserDAOImpl extends AbstractDAO implements UserDAO {
                 check = rs.getInt(1);
             }
         } catch (SQLException e) {
-            log.error(Messages.USER_CHECK_NAME_ERROR, e);
-            throw new DAOException(Messages.USER_CHECK_NAME_ERROR, e);
+            log.error(Messages.USER_CHECK_ERROR, e);
+            throw new DAOException(Messages.USER_CHECK_ERROR, e);
         } finally {
             close(stmt);
             close(rs);

@@ -17,16 +17,16 @@
     <c:forEach items="${movies}" var="movie">
         <c:if test="${language ne 'en'}">
             <div class="content content-1 clearfix">
-                <a href="controller?command=goToMovie&movieId=${movie.id}"><p class="name name-1">${movie.name_ru}</p></a>
+                <a href="controller?command=goToMovie&movieId=${movie.id}"><p class="name name-1">${movie.nameRu}</p></a>
                 <img class="image image-1" src=${movie.image}>
-                <p class="title title-1">${movie.title_ru}</p>
+                <p class="title title-1">${movie.titleRu}</p>
             </div>
         </c:if>
         <c:if test="${language eq 'en'}">
             <div class="content content-1 clearfix">
-                <a href="controller?command=goToMovie&movieId=${movie.id}"><p class="name name-1">${movie.name_en}</p></a>
+                <a href="controller?command=goToMovie&movieId=${movie.id}"><p class="name name-1">${movie.nameEn}</p></a>
                 <img class="image image-1" src=${movie.image}>
-                <p class="title title-1">${movie.title_en}</p>
+                <p class="title title-1">${movie.titleEn}</p>
             </div>
         </c:if>
     </c:forEach>

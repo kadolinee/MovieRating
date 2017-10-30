@@ -17,8 +17,7 @@ public class Messages {
     public static final String USER_CREATE_ERROR = "Cannot create user";
     public static final String USER_READ_BY_NAME_AND_PWD_ERROR = "Cannot find user by name and password";
     public static final String USER_SALT_READ_BY_NAME_ERROR = "Cannot find salt by user name";
-    public static final String USER_CHECK_NAME_ERROR = "Cannot check user name";
-    public static final String USER_CHECK_MAIL_ERROR = "Cannot check user mail";
+    public static final String USER_CHECK_ERROR = "Cannot check user";
 
     public static final String ENCRYPTOR_GET_PWD_ERROR = "Cannot check user mail";
     public static final String ENCRYPTOR_GET_SALT_ERROR = "Cannot check user mail";

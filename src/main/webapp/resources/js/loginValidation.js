@@ -1,7 +1,7 @@
 function checkExistLogin() {
     var xmlhttp = new XMLHttpRequest();
     var username = document.forms["registform"]["username"].value;
-    var url = "controller?command=checknameusername=" + username;
+    var url = "controller?command=checkName&username=" + username;
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             if ("false" === xmlhttp.responseText) {

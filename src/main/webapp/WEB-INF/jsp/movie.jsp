@@ -45,22 +45,22 @@
             </form>
         </c:if>
         <c:if test="${language ne 'en'}">
-            <p class="h2 h2-7">${movie.awards_ru}</p>
-            <p class="h2 h2-8">${movie.cast_ru}</p>
-            <p class="h2 h2-9">${movie.country_ru}</p>
-            <p class="h2 h2-10">${movie.genre_ru}</p>
-            <p class="h1">${movie.name_ru}</p>
+            <p class="h2 h2-7">${movie.awardsRu}</p>
+            <p class="h2 h2-8">${movie.castRu}</p>
+            <p class="h2 h2-9">${movie.countryRu}</p>
+            <p class="h2 h2-10">${movie.genreRu}</p>
+            <p class="h1">${movie.nameRu}</p>
             <div class="h2 h2-12">
-                <p>${movie.title_ru}</p>
+                <p>${movie.titleRu}</p>
             </div>
         </c:if>
         <c:if test="${language eq 'en'}">
-            <p class="h1">${movie.name_en}</p>
-            <p class="h2 h2-7">${movie.awards_en}</p>
-            <p class="h2 h2-8">${movie.cast_en}</p>
-            <p class="h2 h2-9">${movie.country_en}</p>
-            <p class="h2 h2-10">${movie.genre_en}</p>
-            <div class="h2 h2-12"><p>${movie.title_en}</p></div>
+            <p class="h1">${movie.nameEn}</p>
+            <p class="h2 h2-7">${movie.awardsEn}</p>
+            <p class="h2 h2-8">${movie.castEn}</p>
+            <p class="h2 h2-9">${movie.countryEn}</p>
+            <p class="h2 h2-10">${movie.genreEn}</p>
+            <div class="h2 h2-12"><p>${movie.titleEn}</p></div>
         </c:if>
         <p class="h2 h2-5">${movie.duration}</p>
         <p class="h2 h2-11">${movie.year}</p>
