@@ -1,6 +1,7 @@
 package com.epam.kinorating.command.user;
 
 import com.epam.kinorating.command.Command;
+import com.epam.kinorating.config.Attribute;
 import com.epam.kinorating.service.UserService;
 import org.apache.log4j.Logger;
 
@@ -21,7 +22,7 @@ public class CheckMailCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        String mail = request.getParameter("mail");
+        String mail = request.getParameter(Attribute.ATTRIBUTE_MAIL);
         try {
             PrintWriter printWriter = response.getWriter();
 
@@ -29,9 +30,9 @@ public class CheckMailCommand implements Command {
                 printWriter.print("false");
             }
         } catch (UnknownHostException e) {
-            log.error("Got a problem with the host" ,e);
+            log.error("Got a problem with the host", e);
         } catch (IOException e) {
-            log.error("Got a problem with IO");
+            log.error("Got a problem with IO", e);
         }
     }
 }
