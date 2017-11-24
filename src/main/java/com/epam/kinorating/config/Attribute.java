@@ -3,6 +3,7 @@ package com.epam.kinorating.config;
 public class Attribute {
     private Attribute() {}
 
+    public static final String AAAAAAAAAAA = "aaaaaaaaaa";
     public static final String ATTRIBUTE_SEARCH = "search";
     public static final String ATTRIBUTE_MOVIES = "movies";
     public static final String ATTRIBUTE_ERROR_MESSAGE = "errmessage";
