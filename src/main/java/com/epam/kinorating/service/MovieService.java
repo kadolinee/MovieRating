@@ -1,7 +1,7 @@
 package com.epam.kinorating.service;
 
-import com.epam.kinorating.db.dao.MovieDAO;
-import com.epam.kinorating.db.dao.impl.MovieDAOImpl;
+import com.epam.kinorating.db.dao.MovieDao;
+import com.epam.kinorating.db.dao.impl.MovieDaoImpl;
 import com.epam.kinorating.entity.Movie;
 import com.epam.kinorating.exception.DAOException;
 import com.epam.kinorating.exception.ServiceException;
@@ -12,7 +12,7 @@ import java.util.List;
 public class MovieService {
     private static final Logger log = Logger.getLogger(MovieService.class);
 
-    private static MovieDAO movieDAO = new MovieDAOImpl();
+    private static MovieDao movieDAO = new MovieDaoImpl();
 
     private MovieService() {}
 

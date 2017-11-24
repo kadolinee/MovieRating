@@ -2,8 +2,7 @@ package com.epam.kinorating.db.dao.impl;
 
 import com.epam.kinorating.config.Fields;
 import com.epam.kinorating.config.Messages;
-import com.epam.kinorating.db.dao.AbstractDAO;
-import com.epam.kinorating.db.dao.UserDAO;
+import com.epam.kinorating.db.dao.UserDao;
 import com.epam.kinorating.db.manager.DBManager;
 import com.epam.kinorating.entity.User;
 import com.epam.kinorating.exception.DAOException;
@@ -13,10 +12,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOImpl extends AbstractDAO implements UserDAO {
-    private static final Logger log = Logger.getLogger(UserDAOImpl.class);
+public class UserDaoImpl extends AbstractDAO implements UserDao {
+    private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 
-    public UserDAOImpl() {
+    public UserDaoImpl() {
         this.manager = DBManager.getInstance();
     }
 

@@ -4,7 +4,7 @@ import com.epam.kinorating.entity.UserAction;
 
 import java.util.List;
 
-public interface UserActionDAO {
+public interface UserActionDao {
     boolean create(UserAction userAction);
     List<UserAction> readAll(int movieId);
     int isRated(int userId, int movieId);

@@ -1,7 +1,7 @@
 package com.epam.kinorating.service;
 
-import com.epam.kinorating.db.dao.UserDAO;
-import com.epam.kinorating.db.dao.impl.UserDAOImpl;
+import com.epam.kinorating.db.dao.UserDao;
+import com.epam.kinorating.db.dao.impl.UserDaoImpl;
 import com.epam.kinorating.entity.User;
 import com.epam.kinorating.encryptor.Encryptor;
 import com.epam.kinorating.exception.DAOException;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UserService {
     private static final Logger log = Logger.getLogger(UserService.class);
 
-    private static UserDAO userDAO = new UserDAOImpl();
+    private static UserDao userDAO = new UserDaoImpl();
 
     private UserService() {}
 

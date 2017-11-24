@@ -4,7 +4,7 @@ import com.epam.kinorating.entity.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserDao {
     int create(User user);
     User read(String name, String password);
     String read(String name);

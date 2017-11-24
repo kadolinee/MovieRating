@@ -1,18 +1,24 @@
 package com.epam.kinorating.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
+@Entity
+@Table(name = "user")
 public class User implements Serializable{
+    @Id @GeneratedValue
     private int id;
     private String name;
     private double rating = 10.0;
     private String mail;
     private String password;
+    @Column(name = "date_create")
     private Date dateCreate;
     private String salt;
     private boolean banned;
-    int roleId = 2;
+    @Column(name = "role_id")
+    private int roleId = 2;
 
     public User() {}
 

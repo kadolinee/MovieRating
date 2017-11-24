@@ -1,15 +1,23 @@
 package com.epam.kinorating.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
+@Entity
+@Table(name = "user_action")
 public class UserAction implements Serializable{
+    @Id @GeneratedValue
     private int id;
+    @Column(name = "user_id")
     private int userId;
+    @Column(name = "movie_id")
     private int movieId;
     private int rating;
     private String review;
+    @Column(name = "date_valuation")
     private Date dateValuation;
+    @Column(name = "date_create_review")
     private Date dateReview;
 
     public UserAction() {}

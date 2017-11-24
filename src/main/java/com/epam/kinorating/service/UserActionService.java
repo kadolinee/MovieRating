@@ -1,7 +1,7 @@
 package com.epam.kinorating.service;
 
-import com.epam.kinorating.db.dao.UserActionDAO;
-import com.epam.kinorating.db.dao.impl.UserActionDAOImpl;
+import com.epam.kinorating.db.dao.UserActionDao;
+import com.epam.kinorating.db.dao.impl.UserActionDaoImpl;
 import com.epam.kinorating.entity.UserAction;
 import com.epam.kinorating.exception.DAOException;
 import com.epam.kinorating.exception.ServiceException;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserActionService {
     private static final Logger log = Logger.getLogger(UserActionService.class);
 
-    private static UserActionDAO userActionDAO = new UserActionDAOImpl();
+    private static UserActionDao userActionDAO = new UserActionDaoImpl();
 
     private UserActionService() {}
 

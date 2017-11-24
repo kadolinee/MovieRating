@@ -1,24 +1,41 @@
 package com.epam.kinorating.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "movie")
 public class Movie implements Serializable{
+    @Id @GeneratedValue
     private int id;
+    @Column(name = "name_ru")
     private String nameRu;
+    @Column(name = "name_en")
     private String nameEn;
+    @Column(name = "genre_ru")
     private String genreRu;
+    @Column(name = "genre_en")
     private String genreEn;
     private int year;
+    @Column(name = "title_ru")
     private String titleRu;
+    @Column(name = "title_en")
     private String titleEn;
+    @Column(name = "country_ru")
     private String countryRu;
+    @Column(name = "country_en")
     private String countryEn;
     private int duration;
+    @Column(name = "cast_ru")
     private String castRu;
+    @Column(name = "cast_en")
     private String castEn;
+    @Column(name = "awards_ru")
     private String awardsRu;
+    @Column(name = "awards_en")
     private String awardsEn;
     private String image;
+    @Column(name = "tv_serial")
     private boolean tvSerial;
 
     public Movie() {}
